@@ -1,4 +1,4 @@
 export default {
-  ADD_USER: 'ADD_USER',
+  USER_ADDED: 'USER_ADDED',
   REMOVE_USER: 'REMOVE_USER'
 }

@@ -6,11 +6,9 @@ import NotFound from './components/shared/NotFound';
 
 export default () => (
   <Router>
-    <div>
-      <Switch>
-        <Route exact path="/" component={App} />
-        <Route component={NotFound} />
-      </Switch>
-    </div>
+    <Switch>
+      <Route exact path="/" component={App} />
+      <Route component={NotFound} />
+    </Switch>
   </Router>
 );

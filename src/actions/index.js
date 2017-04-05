@@ -1,9 +1,16 @@
 import ActionTypes from './types';
 
-const addUserToQueue = user => ({
-  type: ActionTypes.ADD_USER,
+const userAddedToQueue = user => ({
+  type: ActionTypes.USER_ADDED,
   user
 });
+
+export const addUserToQueue = user =>
+  (dispatch, getState, getFirebase) => {
+    const firebase = getFirebase();
+    firebase.push('queue', { user })
+      .then(() => dispatch(userAddedToQueue(user)))
+  };
 
 const removeUserFromQueue = user => ({
   type: ActionTypes.REMOVE_USER,
