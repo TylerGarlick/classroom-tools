@@ -6,22 +6,17 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import Thunk from 'redux-thunk';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import './index.css';
-import Routes from './routes';
+import Router from './router';
 import Reducers from './reducers';
+import Configuration from './configuration';
+
+import './styles/global.css';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
-
-const config = {
-  apiKey: 'AIzaSyCiJwxNzY-6TFp_VIecqKxVAIqL_L2sjlA',
-  authDomain: 'classroom-tools-f7a09.firebaseapp.com',
-  databaseURL: 'https://classroom-tools-f7a09.firebaseio.com',
-  projectId: 'classroom-tools-f7a09',
-  storageBucket: 'classroom-tools-f7a09.appspot.com',
-  messagingSenderId: '643004676545'
-};
 
 const store = createStore(
   Reducers,
@@ -31,15 +26,19 @@ const store = createStore(
       Thunk.withExtraArgument(getFirebase)
     ),
     applyMiddleware(middleware),
-    reactReduxFirebase(config, { userProfile: 'users', enableLogging: true })
+    reactReduxFirebase(Configuration, { userProfile: 'users', enableLogging: false })
   )
 );
 
+injectTapEventPlugin();
+
 ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Routes />
-    </ConnectedRouter>
-  </Provider>,
+  <MuiThemeProvider>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <Router />
+      </ConnectedRouter>
+    </Provider>
+  </MuiThemeProvider>,
   document.getElementById('root')
 );

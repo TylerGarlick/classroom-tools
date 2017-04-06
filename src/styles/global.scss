@@ -1,0 +1,138 @@
+$min-unit: 8px;
+$unit-2x: $min-unit * 2;
+$unit-4x: $unit-2x * 2;
+
+.reset-box {
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  @extend .reset-box;
+
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.AppShell {
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+
+.white {
+  color: white;
+}
+
+aside {
+  background: #595959;
+  padding: $unit-2x;
+
+  display: flex;
+  flex-direction: column;
+
+  nav {
+
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 9;
+
+
+    a {
+      display: flex;
+      align-items: center;
+
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+
+      margin-bottom: $unit-2x;
+
+
+
+      strong {
+        margin-left: 12px;
+        margin-top: 2px;
+        color: white;
+
+        font-weight: 300;
+      }
+
+    }
+
+
+    .material-icons {
+      color: white !important;
+    }
+  }
+
+  .footer {
+    //align-self: flex-end;
+    flex-grow: 0;
+  }
+}
+
+.collapsed {
+  width: 30px;
+
+  strong {
+    display: none;
+  }
+}
+
+.expanded {
+  min-width: 164px;
+}
+
+section[name="sidebar-action"] {
+  padding: $unit-2x - 2px 6px 6px;
+  cursor: pointer;
+
+  .material-icons {
+    color: #cdcdcd !important;
+  }
+}
+
+article {
+  flex-grow: 1;
+  padding: $unit-2x - 4px $min-unit $min-unit $unit-2x;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @extend .reset-box;
+  margin: 0 0 $unit-2x;
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}

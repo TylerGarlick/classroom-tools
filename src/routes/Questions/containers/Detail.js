@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
-class QueueList extends Component {
+class QuestionsContainer extends Component {
+
 
   render() {
     return (
       <div>
-        <h1>List</h1>
+        <h1>Details</h1>
       </div>
     )
   }
 }
 
-export default QueueList;
+export default QuestionsContainer;
